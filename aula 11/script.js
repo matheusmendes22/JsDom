@@ -56,7 +56,24 @@ function smoothScroll (){
     })
 }
 
+const sections = document.querySelectorAll('.js-scroll');
 
+function animaScroll (){
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowMetade = window.innerHeight * 0.6;
+        const isSectionVisible = (sectionTop - windowMetade) < 0;
+
+        if(isSectionVisible){
+            section.classList.add('ativo')
+        }
+        else{
+            section.classList.remove('ativo')
+        }
+    })
+}
+
+window.addEventListener('scroll', animaScroll);
 
 activeTabs();
 activeAccordion();
