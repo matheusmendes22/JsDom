@@ -20,16 +20,21 @@ function activeTabs (){
 }
 
 function activeAccordion(){
-    const accordionTrigger = document.querySelectorAll('.faq-lista dt')
-    console.log(accordionTrigger);
+    const accordionTrigger = document.querySelectorAll('.js-acordion dt')
+    const activeClass = 'ativo';
 
-    function callbackAccordion(){
-        this.nextElementSibling.classList.toggle('ativo');
+    accordionTrigger[0].classList.add(activeClass) || accordionTrigger[0].nextElementSibling.classList.add(activeClass)
+
+    if(accordionTrigger.length){
+        function callbackAccordion(){
+            this.classList.toggle(activeClass)
+            this.nextElementSibling.classList.toggle(activeClass);
+        }
+    
+        accordionTrigger.forEach(item => {
+            item.addEventListener('click', callbackAccordion)
+        })
     }
-
-    accordionTrigger.forEach(item => {
-        item.addEventListener('click', callbackAccordion)
-    })
 }
 
 activeTabs();
