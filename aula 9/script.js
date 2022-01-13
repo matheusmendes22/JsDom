@@ -19,4 +19,18 @@ function activeTabs (){
     }
 }
 
+function activeAccordion(){
+    const accordionTrigger = document.querySelectorAll('.faq-lista dt')
+    console.log(accordionTrigger);
+
+    function callbackAccordion(){
+        this.nextElementSibling.classList.toggle('ativo');
+    }
+
+    accordionTrigger.forEach(item => {
+        item.addEventListener('click', callbackAccordion)
+    })
+}
+
 activeTabs();
+activeAccordion();
